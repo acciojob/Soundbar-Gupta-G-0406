@@ -1,33 +1,37 @@
 const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
+const btnContainer = document.getElementById('buttons');
 
+// Create sound buttons
 sounds.forEach(sound => {
     const btn = document.createElement('button');
-    btn.classList.add('btn');
+    btn.classList.add('btn'); // Requirement: className 'btn'
+    
     btn.innerText = sound;
 
     btn.addEventListener('click', () => {
-        stopSongs(); // Stop any currently playing audio
+        stopSongs();
         document.getElementById(sound).play();
     });
 
-    document.getElementById('buttons').appendChild(btn);
+    btnContainer.appendChild(btn);
 });
 
-// Create the Stop button separately as per instructions
+// Create the stop button specifically
 const stopBtn = document.createElement('button');
-stopBtn.classList.add('btn', 'stop');
+stopBtn.classList.add('btn');
+stopBtn.classList.add('stop'); // Requirement: className 'stop'
 stopBtn.innerText = 'stop';
 
 stopBtn.addEventListener('click', () => {
     stopSongs();
 });
 
-document.getElementById('buttons').appendChild(stopBtn);
+btnContainer.appendChild(stopBtn);
 
 function stopSongs() {
     sounds.forEach(sound => {
         const song = document.getElementById(sound);
         song.pause();
-        song.currentTime = 0; // Reset to the beginning
+        song.currentTime = 0; // Rewind to start
     });
 }
