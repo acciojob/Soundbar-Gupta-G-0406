@@ -1,27 +1,30 @@
 body {
-  margin: 0;
-  height: 100vh;
-  background-color: #a56de2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#buttons {
-  display: flex;
-  gap: 20px;
+    background-color: rgb(161, 100, 223);
+    font-family: sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .btn {
-  background-color: #5e2d91;
-  color: white;
-  border: none;
-  padding: 15px 25px;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
+    background-color: rebeccapurple;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    margin: 1rem;
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .btn:hover {
-  opacity: 0.9;
+    opacity: 0.9;
+}
+
+.stop {
+    background-color: #6a1b9a; /* Darker purple for stop */
 }

@@ -1,30 +1,33 @@
-const sounds = ["applause", "boo", "gasp", "tada", "victory", "wrong"];
-let currentAudio = null;
+const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
 
-document.querySelectorAll(".btn").forEach(button => {
-  button.addEventListener("click", () => {
-    const sound = button.innerText;
+sounds.forEach(sound => {
+    const btn = document.createElement('button');
+    btn.classList.add('btn');
+    btn.innerText = sound;
 
-    // Stop button
-    if (sound === "stop") {
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
-      return;
-    }
+    btn.addEventListener('click', () => {
+        stopSongs(); // Stop any currently playing audio
+        document.getElementById(sound).play();
+    });
 
-    // Stop previous audio
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    }
-
-    // Get existing audio element
-    const audio = document.getElementById(sound);
-    audio.currentTime = 0;
-    audio.play();
-
-    currentAudio = audio;
-  });
+    document.getElementById('buttons').appendChild(btn);
 });
+
+// Create the Stop button separately as per instructions
+const stopBtn = document.createElement('button');
+stopBtn.classList.add('btn', 'stop');
+stopBtn.innerText = 'stop';
+
+stopBtn.addEventListener('click', () => {
+    stopSongs();
+});
+
+document.getElementById('buttons').appendChild(stopBtn);
+
+function stopSongs() {
+    sounds.forEach(sound => {
+        const song = document.getElementById(sound);
+        song.pause();
+        song.currentTime = 0; // Reset to the beginning
+    });
+}
